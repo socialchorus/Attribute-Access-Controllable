@@ -1,0 +1,6 @@
+pairs:
+  cb: Chris Barretto; chris
+email:
+  prefix: pair
+  domain: socialchorus.com
+  no_solo_prefix: true
