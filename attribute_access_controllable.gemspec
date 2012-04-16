@@ -2,8 +2,8 @@
 require File.expand_path('../lib/attribute_access_controllable/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Kenneth Mayer"]
-  gem.email         = ["kmayer@bitwrangler.com"]
+  gem.authors       = ["Social Chorus", "Kenneth Mayer"]
+  gem.email         = ["tech@socialchorus.com", "kmayer@bitwrangler.com"]
   gem.description   = %q{TODO: Write a gem description}
   gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""
