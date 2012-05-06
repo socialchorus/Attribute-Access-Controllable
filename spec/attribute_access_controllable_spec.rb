@@ -4,6 +4,7 @@ require 'active_record/errors'
 require 'active_record/validations'
 
 require 'attribute_access_controllable'
+require 'attribute_access_controllable/spec_support'
 
 class TestFakePersistance
   include Informal::Model

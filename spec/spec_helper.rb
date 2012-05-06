@@ -1,5 +1,6 @@
 require 'bundler'
 Bundler.setup
+require 'ammeter/init'
 
 SPEC_ROOT = File.dirname(__FILE__)
 

@@ -1,0 +1,1 @@
+require 'attribute_access_controllable/spec_support/shared_examples'

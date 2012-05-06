@@ -1,0 +1,14 @@
+Description:
+    Add attribute access control to an ActiveRecord model
+
+Example:
+    rails generate attribute_access Thing
+
+    This will create a migration thats adds 
+    :read_only_attributes to your Thing model
+        
+    You will then need to add
+    
+        include AttributeAccessControllable
+    
+    to your model to enable the new behavior
