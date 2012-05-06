@@ -29,21 +29,16 @@ Or install it yourself as:
 
 Generate a migration for your class
 
-    $ rails generate attribute_access:migration Person
+    $ rails generate attribute_access Person
     $ rake db:migrate
     
 In your model, add the following:
 
-    ```rails
     class Person < ActiveRecord::Base
       include AttributeAccessControllable
-      ...
-    ```
       
 Add hooks to mark attributes as read_only:
 
-    ```rails
-    ...
     before_save :mark_birthday_read_only
       
     private
@@ -51,8 +46,6 @@ Add hooks to mark attributes as read_only:
       def mark_birthday_read_only
         attr_read_only(:birthday)
       end
-    ...
-    ```
     
 If, in the future, you need by-pass the validations, pass `:skip_read_only => true` to the instance's `save` or `save!` methods.
 
@@ -60,13 +53,11 @@ If, in the future, you need by-pass the validations, pass `:skip_read_only => tr
 
 Adding this to your model spec will exercise the feature.
 
-    ```rails
     require 'attribute_access_controllable/spec_support'
 
     describe Person do
       it_should_behave_like "it has AttributeAccessControllable", :test_column
     end
-    ```
 
 ## Contributing
 
