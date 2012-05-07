@@ -13,7 +13,7 @@ set, cannot be changed again (except, perhaps by an administrator with
 extraordinary privileges). Any attempts to change this value to 
 raise a validation error.
 EOT
-  gem.homepage      = "http://github.com/halogen/attribute-access-controllable"
+  gem.homepage      = "https://github.com/halogenguides/Attribute-Access-Controllable"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
