@@ -2,7 +2,7 @@
 
 One of the many pleasures of working at Pivotal Labs is that we are encouraged to release some of our work as open source. Often during the course of our engagements, we write code that might have wide-spread use. Due to the nature of our contracts, we can not unilaterally release such code. Those rights belong to the client. And rightly so. So, it is an even greater pleasure when one of our clients believes in "giving back" to the community, as well. 
 
-One such example is this modest gem, `attribute-access-controllable` which allows you to control read-only access at the _attribute_ level, on a per-instance basis. For example, let's say that you have a model `Person` with an attribute `birthday`, which, for security purposes, cannot be changed once this attribute is set (except, perhaps, by an administrator with extraordinary privileges). Any future attempts to change this attribute will result in a validation error.
+One such example is this modest gem, `attribute_access_controllable` which allows you to control read-only access at the _attribute_ level, on a per-instance basis. For example, let's say that you have a model `Person` with an attribute `birthday`, which, for security purposes, cannot be changed once this attribute is set (except, perhaps, by an administrator with extraordinary privileges). Any future attempts to change this attribute will result in a validation error.
 
 e.g.
 
@@ -69,9 +69,9 @@ is your best friend. It set up the layout for us, including an MIT License and a
 Next, we wrote a draft of the README file which documented what we knew (you needed a migration to create a column called `:read_only_attributes` and you needed to include the module into the class). Then we started thinking about the pain points of using our code as is. Wouldn't it be nice if we could create the migration automatically? Rails generators do that sort of thing, how hard could it be? (Famous last words...) It became clear that we needed to test drive out some new features of the _gem_ that supported the actual _module_.
 
 #### To do
-  1. <strike>MIT License</strike>
-  2. <strike>A gem specification</strike>
-  3. <strike>Basic documentation in a README file</strike>
+  1. ~~MIT License~~
+  2. ~~A gem specification~~
+  3. ~~Basic documentation in a README file~~
   4. Integration test
 
 ### I am not a big cucumber fan, but...
@@ -91,10 +91,10 @@ Really, I'm not. I used to write them all the time, but nowadays, I use a combin
 You probably won't find any web-steps out there to handle these lines. I use [Aruba](https://github.com/cucumber/aruba) to handle the dirty work of executing shell commands in a safe sandbox-y way. The [step definition file](https://github.com/halogenguides/Attribute-Access-Controllable/blob/master/features/step_definitions/steps.rb) hides all the ugliness away. Even so, most readers could figure out what to do, by hand, for each step.
 
 #### To do
-  1. <strike>MIT License</strike>
-  2. <strike>A gem specification</strike>
-  3. <strike>Basic documentation in a README file</strike>
-  4. <strike>Integration test</strike>
+  1. ~~MIT License~~
+  2. ~~A gem specification~~
+  3. ~~Basic documentation in a README file~~
+  4. ~~Integration test~~
   5. Generator
 
 ### Big generators
@@ -160,11 +160,11 @@ Here's something that I did not know, but it might help new generator writers; t
       end
 
 #### To do
-  1. <strike>MIT License</strike>
-  2. <strike>A gem specification</strike>
-  3. <strike>Basic documentation in a README file</strike>
-  4. <strike>Integration test</strike>
-  5. <strike>Generator</strike>
+  1. ~~MIT License~~
+  2. ~~A gem specification~~
+  3. ~~Basic documentation in a README file~~
+  4. ~~Integration test~~
+  5. ~~Generator~~
   6. Shareable tests
   
 ## Yo, I hear you like tests in your tests
@@ -181,12 +181,12 @@ Which is where `And I have a test that exercises read-only` comes in. You can se
     end
 
 #### To do
-  1. <strike>MIT License</strike>
-  2. <strike>A gem specification</strike>
-  3. <strike>Basic documentation in a README file</strike>
-  4. <strike>Integration test</strike>
-  5. <strike>Generator</strike>
-  6. <strike>Shareable tests</strike>
+  1. ~~MIT License~~
+  2. ~~A gem specification~~
+  3. ~~Basic documentation in a README file~~
+  4. ~~Integration test~~
+  5. ~~Generator~~
+  6. ~~Shareable tests~~
   
 ## Don't be afraid to release v1.0.0
 
