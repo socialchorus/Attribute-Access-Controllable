@@ -20,7 +20,7 @@ class TestFakePersistance
 end
 
 class TestAttributeAccessControllable < TestFakePersistance
-  attr_accessor :read_only_attributes # created via a migration
+  attr_accessor :read_only_attributes # usually created via a migration
   include ActiveModel::Dirty
 
   define_attribute_methods [:test_column]

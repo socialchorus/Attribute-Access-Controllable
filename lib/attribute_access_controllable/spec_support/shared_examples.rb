@@ -21,20 +21,20 @@ shared_examples_for "it has AttributeAccessControllable" do |test_column|
     subject.errors[test_column].should =~ ["is invalid", "is read_only"]
   end
 
-  it "#save!(:context => :skip_read_only)" do
+  it "#save!(:context => :skip_read_only) is okay" do
     subject.attr_read_only(test_column)
     subject.send(test_column.to_s + '=', 0)
     expect { subject.save!(:skip_read_only => true) }.to_not raise_error
   end
 
-  it "#save invalid when :attribute is read-only" do
+  it "#save is invalid when :attribute is read-only" do
     subject.attr_read_only(test_column)
     subject.send(test_column.to_s + '=', 0)
     subject.save(context: :update).should be_false
     subject.errors[test_column].should =~ ["is invalid", "is read_only"]
   end
 
-  it "#save(:context => :skip_read_only)" do
+  it "#save(:context => :skip_read_only) is okay" do
     subject.attr_read_only(test_column)
     subject.send(test_column.to_s + '=', 0)
     subject.save!(:skip_read_only => true).should_not be_false

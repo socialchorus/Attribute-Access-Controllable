@@ -1,7 +1,7 @@
 @announce-cmd
 Feature: Read only attributes
 
-Scenario: Including in a simple rails application
+Scenario: In a simple rails application
   Given a new rails application
   And I generate a new migration for the class "Person"
   And I generate an attribute access migration for the class "Person"

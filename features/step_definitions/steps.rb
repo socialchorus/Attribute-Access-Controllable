@@ -13,8 +13,8 @@ EOT
   run_simple 'script/rails generate rspec:install'
 end
 
-Given /^I generate a new migration for the class "(.*?)"$/ do |klass|
-  cmd = "rails generate model #{klass} attr1:string --test-framework"
+Given /^I generate a new migration for the class "Person"$/ do
+  cmd = "rails generate model Person attr1:string --test-framework"
   run_simple cmd
   output = stdout_from cmd
   assert_partial_output "invoke  active_record", output
@@ -26,8 +26,8 @@ Given /^I generate a new migration for the class "(.*?)"$/ do |klass|
   assert_matching_output %q{==  Create.+: migrated}, output
 end
 
-Given /^I generate an attribute access migration for the class "(.*?)"$/ do |klass|
-  cmd = "rails generate attribute_access #{klass}"
+Given /^I generate an attribute access migration for the class "Person"$/ do
+  cmd = "rails generate attribute_access Person"
   run_simple cmd
   output = stdout_from cmd
   assert_matching_output "create\\s+db/migrate/\\d+_add_read_only_attributes_to_.+\.rb", output

@@ -1,10 +1,10 @@
 require "spec_helper"
-require 'rails/generators/active_record'
 require 'generators/attribute_access/attribute_access_generator'
 
 describe AttributeAccessGenerator do
   before do
     prepare_destination
+    Rails::Generators.options[:rails][:orm] = :active_record
   end
 
   context "new class" do

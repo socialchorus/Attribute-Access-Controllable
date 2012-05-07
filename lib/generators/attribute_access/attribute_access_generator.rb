@@ -21,7 +21,7 @@ class AttributeAccessGenerator < ActiveRecord::Generators::Base
     indent_depth = class_path.size
     content = "  " * indent_depth + 'include AttributeAccessControllable' + "\n"
     
-    inject_into_class(model_path, class_path.last, content) if model_exists?
+    inject_into_class(model_path, class_path.last, content)
   end
   
   private
