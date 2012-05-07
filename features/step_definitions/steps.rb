@@ -1,7 +1,7 @@
 World(Aruba::Api)
 
 Given /^a new rails application$/ do
-  run_simple "rails new test_app --quiet --force --skip-bundle --skip-test --skip-javascript --skip-sprockets"
+  run_simple "rails new test_app --quiet --force --skip-bundle --skip-test-unit --skip-javascript --skip-sprockets"
   cd '/test_app'
   use_clean_gemset 'test_app'
   write_file '.rvmrc', "rvm use default@test_app\n"
@@ -38,7 +38,7 @@ Given /^I generate an attribute access migration for the class "(.*?)"$/ do |kla
 end
 
 Given /^I have a test that exercises read\-only$/ do
-  write_file 'spec/models/person_spec.rb', <<EOT
+  overwrite_file 'spec/models/person_spec.rb', <<EOT
 require 'spec_helper'
 require 'attribute_access_controllable/spec_support'
 

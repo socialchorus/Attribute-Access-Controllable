@@ -3,16 +3,16 @@ require "rails/generators/active_record"
 class AttributeAccessGenerator < ActiveRecord::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   
-  def generate_model
-    invoke "active_record:model", [name], :migration => false unless model_exists? && behavior == :invoke
-  end
-  
   def create_migration_file
     if (behavior == :invoke && model_exists?)
       migration_template "migration.rb", "db/migrate/add_read_only_attributes_to_#{table_name}"
     else
-      raise "Model #{name} must exist"
+      migration_template "migration_create.rb", "db/migrate/create_#{table_name}"
     end
+  end
+  
+  def generate_model
+    invoke "active_record:model", [name], :migration => false unless model_exists? && behavior == :invoke
   end
   
   def inject_attribute_access_content

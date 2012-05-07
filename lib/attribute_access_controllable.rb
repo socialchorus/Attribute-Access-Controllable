@@ -1,5 +1,3 @@
-require "attribute_access_controllable/version"
-
 module AttributeAccessControllable
   extend ActiveSupport::Concern
 
