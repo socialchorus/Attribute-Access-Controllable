@@ -13,7 +13,7 @@ e.g.
     > alice.save!
     => true
     > alice.birthday = "2012-12-12"
-     => "2012-12-12" 
+    => "2012-12-12" 
     > alice.save!
     ActiveRecord::RecordInvalid: Validation failed: Birthday is invalid, Birthday is read_only
     > alice.save!(:skip_read_only => true)
@@ -23,9 +23,9 @@ Setting this up is trivial, thanks to a Rails generator which does most of the h
 
     rails generate attribute_access Person
     
-After that, you need only know about 1 new method to your class:
+After that, you need only know about one new method added to your class:
 
-    #attr_read_only(*attributes): Marks an attribute as read-only.
+    #attr_read_only(*attributes) # Marks attributes as read-only
     
 There are a few others, but this one, plus the new functionality added to `#save` and `#save!` will get you quite far.
 
@@ -56,7 +56,7 @@ The list got longer as we fleshed out both the documentation and the integration
 
 ### Getting the legal issues resolved, easily and quickly
 
-Pivotal's open sourcing policy is straightforward and simple to execute; We don't touch it. We write code for our clients, it's their code to do with as they please. My particular client liked the work we did for them and thought it would make a great open source gem. The Director of Engineering signed off on the idea and I paired with him to create the github repository during a lunch break. The first commit was tiny, just a basic directory structure and the existing code. I don't think the tests passed because they lacked a proper rspec infrastructure.
+Pivotal's open sourcing policy is straightforward and simple to execute; We don't touch it. We write code for our clients, it's their code to do with as they please. My particular client liked the work we did for them and thought it would make a great open source gem. The Director of Engineering signed off on the idea and I paired with him to create the github repository during a lunch break. The first commit was tiny, just a basic directory structure and the existing code. I don't think the tests passed because they lacked a proper RSpec infrastructure.
 
 ### Creating the gem
 
@@ -76,7 +76,7 @@ Next, we wrote a draft of the README file which documented what we knew (you nee
 
 ### I am not a big cucumber fan, but...
 
-Really, I'm not. I used to write them all the time, but nowadays, I use a combination of RSpec and Capybara to get most of my day-to-day integration testing done. There is, however, one sweet spot for cucumber that I'm finding more and more useful; A very high-level document that describes essential features in a way that a reader will say, "Ahhh, so _that_ is how it is supposed to work!" Here's a copy of the spec I wrote:
+Really, I'm not. I used to write them all the time, but nowadays, I use a combination of RSpec and Capybara to get most of my day-to-day integration testing done. There is, however, one sweet spot for Cucumber that I'm finding more and more useful; A very high-level document that describes essential features in a way that a reader will say, "Ahhh, so _that_ is how it is supposed to work!" Here's a copy of the spec I wrote:
 
     Feature: Read only attributes
 
@@ -101,7 +101,7 @@ You probably won't find any web-steps out there to handle these lines. I use [Ar
 
 This gem was my first attempt at writing a generator, so it was awkward. I still don't understand [Thor](https://github.com/wycats/thor) properly. Fortunately, I happened upon [Ammeter](https://github.com/alexrothenberg/ammeter), which helped me write out test specs for the generator. If you've got good specs, then you can sometimes stumble along until you learn enough to get it right. Alex Rothenberg's original [blog post](http://www.alexrothenberg.com/2011/10/10/ammeter-the-way-to-write-specs-for-your-rails-generators.html) about the gem was quite informative, as were the test cases from the [Devise](https://github.com/plataformatec/devise/tree/master/test/generators) gem.
 
-I have to admit; constructing the generator was more complex than the original module! There are more "moving parts;" templates, usage files, specs, in addition to the generator itself. So there is a minimum amount of overhead that might overwhelm the original content. On the other hand, I learned quite a bit, and the gem is far more useful! 
+I have to admit; constructing the generator was more complex than the original module! There are more "moving parts;" templates, usage files, specs, in addition to the generator itself. So there is a certain amount of overhead that might overwhelm the original content. On the other hand, I learned quite a bit, and the gem is far more useful.
 
     require "spec_helper"
     require 'generators/attribute_access/attribute_access_generator'
