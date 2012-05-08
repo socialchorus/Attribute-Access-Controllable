@@ -17,6 +17,13 @@ class TestFakePersistance
   def save!(options={})
     perform_validations(options) ? :pretend_to_call_super : raise(ActiveRecord::RecordInvalid.new(self))
   end
+  
+  def reload
+    self
+  end
+  
+  def self.serialize(*)
+  end
 end
 
 class TestAttributeAccessControllable < TestFakePersistance

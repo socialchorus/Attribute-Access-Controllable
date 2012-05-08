@@ -7,6 +7,6 @@ Scenario: In a simple rails application
   And I generate an attribute access migration for the class "Person"
   And I have a test that exercises read-only
   When I run `rake spec`
-  Then the output should contain "7 examples, 0 failures"
+  Then the output should contain "8 examples, 0 failures"
 
 

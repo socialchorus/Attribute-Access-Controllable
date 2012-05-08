@@ -39,6 +39,13 @@ shared_examples_for "it has AttributeAccessControllable" do |test_column|
     subject.send(test_column.to_s + '=', 0)
     subject.save!(:skip_read_only => true).should_not be_false
   end
+  
+  it "serializes :read_only_attributes" do
+    subject.attr_read_only(test_column)
+    subject.save!
+    subject.reload
+    subject.read_only_attributes.should == Set.new([test_column.to_s])
+  end
 
   #it "#attr_writable(:attribute)"
 end

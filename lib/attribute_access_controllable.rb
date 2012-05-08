@@ -3,6 +3,7 @@ module AttributeAccessControllable
 
   included do
     include ActiveModel::Validations
+    serialize :read_only_attributes
     attr_accessor :skip_read_only # TODO: Really should name this something private (e.g. :_#{class_name}_skip_read_only)
     validate :read_only_attributes_unchanged, :on => :update, :unless => :skip_read_only
   end
