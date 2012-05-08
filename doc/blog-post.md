@@ -2,7 +2,7 @@
 
 One of the many pleasures of working at Pivotal Labs is that we are encouraged to release some of our work as open source. Often during the course of our engagements, we write code that might have wide-spread use. Due to the nature of our contracts, we can not unilaterally release such code. Those rights belong to the client. And rightly so. So, it is an even greater pleasure when one of our clients believes in "giving back" to the community, as well. 
 
-One such example is this modest gem, `attribute_access_controllable` which allows you to control read-only access at the _attribute_ level, on a per-instance basis. For example, let's say that you have a model `Person` with an attribute `birthday`, which, for security purposes, cannot be changed once this attribute is set (except, perhaps, by an administrator with extraordinary privileges). Any future attempts to change this attribute will result in a validation error.
+One such example is this modest gem, `attribute_access_controllable` which allows you to set read-only access at the _attribute_ level, on a per-instance basis. For example, let's say that you have a model `Person` with an attribute `birthday`, which, for security purposes, cannot be changed once this attribute is set (except, perhaps, by an administrator with extraordinary privileges). Any future attempts to change this attribute will result in a validation error.
 
 e.g.
 
@@ -62,11 +62,11 @@ Pivotal's open sourcing policy is straightforward and simple to execute; We don'
 
     bundler gem DIRECTORY
 
-is your best friend. It set up the layout for us, including an MIT License and a gem specificiation. It had a boilerplate README, too.
+is your best friend. It set up the layout for us, including an MIT License and a gem specification. It had a boilerplate README, too.
 
 ### Writing the documentation for the code you wished you had
 
-Next, we wrote a draft of the README file which documented what we knew (you needed a migration to create a column called `:read_only_attributes` and you needed to include the module into the class). Then we started thinking about the pain points of using our code as is. Wouldn't it be nice if we could create the migration automatically? Rails generators do that sort of thing, how hard could it be? (Famous last words...) It became clear that we needed to test drive out some new features of the _gem_ that supported the actual _module_.
+Next, we wrote a draft of the README file which documented what we knew: You needed a migration to create a column called `:read_only_attributes` and you needed to include the module into the class. Then we started thinking about the pain points of using our code as is. Wouldn't it be nice if we could create the migration automatically? Rails generators do that sort of thing, how hard could it be? (Famous last words...) It became clear that we needed to test drive out some new features of the _gem_ that supported the actual _module_.
 
 #### To do
   1. ~~MIT License~~
@@ -76,7 +76,7 @@ Next, we wrote a draft of the README file which documented what we knew (you nee
 
 ### I am not a big cucumber fan, but...
 
-Really, I'm not. I used to write them all the time, but nowadays, I use a combination of RSpec and Capybara to get most of my day-to-day integration testing done. There is, however, one sweet spot for Cucumber that I'm finding more and more useful; A very high-level document that describes essential features in a way that a reader will say, "Ahhh, so _that_ is how it is supposed to work!" Here's a copy of the spec I wrote:
+Really, I'm not. I used to write Cucumber features all the time, but nowadays, I use a combination of RSpec and Capybara to get most of my day-to-day integration testing done. There is, however, one sweet spot for Cucumber that I'm finding more and more useful; A very high-level document that describes essential features in a way that a reader will say, "Ahhh, so _that_ is how it is supposed to work!" Here's a copy of the spec I wrote:
 
     Feature: Read only attributes
 
@@ -88,7 +88,7 @@ Really, I'm not. I used to write them all the time, but nowadays, I use a combin
       When I run `rake spec`
       Then the output should contain "7 examples, 0 failures"
 
-You probably won't find any web-steps out there to handle these lines. I use [Aruba](https://github.com/cucumber/aruba) to handle the dirty work of executing shell commands in a safe sandbox-y way. The [step definition file](https://github.com/halogenguides/Attribute-Access-Controllable/blob/master/features/step_definitions/steps.rb) hides all the ugliness away. Even so, most readers could figure out what to do, by hand, for each step.
+You probably won't find any web-steps out there to handle these lines. I use [Aruba](https://github.com/cucumber/aruba) to handle the dirty work of executing shell commands in a safe sandbox-y way. The [step definition file](https://github.com/halogenguides/Attribute-Access-Controllable/blob/master/features/step_definitions/steps.rb) hides most of the ugliness. Even so, most readers could figure out what to do, by hand, for each step.
 
 #### To do
   1. ~~MIT License~~
@@ -131,7 +131,7 @@ I have to admit; constructing the generator was more complex than the original m
 
 Some interesting things to note; you must `require` the generator, since it is not pulled in by default. The subject of each suite is a _file_, not the class `AttributeAccessGenerator`. The `migration_file` helper prepends the TIMESTAMP onto the migration file for you. If you need to set up more things for your test, `destination_root` is a helper with a path to the temporary directory. It remains after the tests have run, which makes it useful when debugging.
 
-Here's something that I did not know, but it might help new generator writers; the order in which you define your methods in the generator class is _significant_. I don't know how this is done, but each "method" in the generator class is executed in turn. This is important for my generator; the model class definition _must_ exist before I inject the new content that mixes in the module, so I had to write the `generate_model` method before the `inject_attribute_access_content` method. I was scratching my head over that one for quite awhile.
+Here's something else that I did not know, but it might help new generator writers; the order in which you define your methods in the generator class is _significant_. I don't know how this is done, but each "method" in the generator class is executed in turn. This is important for my generator; the model class definition _must_ exist before I inject the new content that mixes in the module, so I had to write the `generate_model` method before the `inject_attribute_access_content` method. I was scratching my head over that one for quite awhile.
 
     require "rails/generators/active_record"
 
