@@ -54,7 +54,7 @@ In order to get to something "releasable" we needed a few more things, which we 
 
 The list got longer as we fleshed out both the documentation and the integration tests, as you'll see in a moment, but first, let's talk about
 
-### Getting the legal issues resolved, easily and quickly
+### Getting the legal issues resolved
 
 Pivotal's open sourcing policy is straightforward and simple to execute; We don't touch it. We write code for our clients, it's their code to do with as they please. My particular client liked the work we did for them and thought it would make a great open source gem. The Director of Engineering signed off on the idea and I paired with him to create the github repository during a lunch break. The first commit was tiny, just a basic directory structure and the existing code. I don't think the tests passed because they lacked a proper RSpec infrastructure.
 
