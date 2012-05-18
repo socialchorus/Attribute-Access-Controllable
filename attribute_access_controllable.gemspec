@@ -2,9 +2,9 @@
 require File.expand_path('../lib/attribute_access_controllable/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Social Chorus", "Kenneth Mayer"]
+  gem.authors       = ["Social Chorus", "Ken Mayer"]
   gem.email         = ["tech@socialchorus.com", "kmayer@bitwrangler.com"]
-  gem.description   = %q{Allow attribute-level read/write access control, per instance, of any ActiveModel class.}
+  gem.description   = %q{Allow attribute-level read-only access control, per instance, on any ActiveRecord class.}
   gem.summary       = <<'EOT'
 This gem allows you to control write access at the _attribute_ level, on a 
 per-instance basis. For example, let's say you had a model `Person` that has 
